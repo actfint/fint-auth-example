@@ -1,0 +1,34 @@
+[build-system]
+requires = ["hatchling", ]
+build-backend = "hatchling.build"
+
+[project]
+name = "fint_auth_example"
+description = "An FPS plugin for an unprotected API"
+keywords = ["fint", "server", "fastapi", "pluggy", "plugins"]
+dynamic = ["version"]
+requires-python = ">=3.7"
+dependencies = ['fint_rtc_server']
+
+[[project.authors]]
+name = "Wh1isper"
+email = "9573586@qq.com"
+
+[project.readme]
+file = "README.md"
+content-type = "text/markdown"
+
+[project.license]
+text = "BSD 3-Clause License"
+
+[tool.check-manifest]
+ignore = [".*", ]
+
+[project.entry-points.fint_auth]
+User = "fint_auth_example.backends:User"
+current_user = "fint_auth_example.backends:current_user"
+update_user = "fint_auth_example.backends:update_user"
+websocket_auth = "fint_auth_example.backends:websocket_auth"
+
+[tool.hatch.version]
+path = "fint_auth_example/__init__.py"
